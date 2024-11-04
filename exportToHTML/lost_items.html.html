@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>lost_items.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #e8bf6a;}
+.s3 { color: #bababa;}
+.s4 { color: #a5c261;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+lost_items.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!-- templates/lost_items.html --&gt;</span>
+<span class="s2">&lt;!DOCTYPE </span><span class="s3">html</span><span class="s2">&gt;</span>
+<span class="s2">&lt;html </span><span class="s3">lang</span><span class="s4">=&quot;en&quot;</span><span class="s2">&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+    <span class="s2">&lt;meta </span><span class="s3">charset</span><span class="s4">=&quot;UTF-8&quot;</span><span class="s2">&gt;</span>
+    <span class="s2">&lt;title&gt;</span><span class="s1">Lost Items</span><span class="s2">&lt;/title&gt;</span>
+    <span class="s2">&lt;style&gt;</span>
+        <span class="s1">/* Add styles for better presentation */</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: Arial, sans-serif;</span>
+            <span class="s1">margin: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">h1 {</span>
+            <span class="s1">text-align: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.item {</span>
+            <span class="s1">border-bottom: 1px solid #ccc;</span>
+            <span class="s1">padding: 10px 0;</span>
+        <span class="s1">}</span>
+        <span class="s1">.item:last-child {</span>
+            <span class="s1">border-bottom: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.item h2 {</span>
+            <span class="s1">margin: 0;</span>
+            <span class="s1">font-size: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.item p {</span>
+            <span class="s1">margin: 5px 0;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button {</span>
+            <span class="s1">display: block;</span>
+            <span class="s1">margin: 20px auto;</span>
+            <span class="s1">text-align: center;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button button {</span>
+            <span class="s1">padding: 10px 20px;</span>
+            <span class="s1">font-size: 16px;</span>
+            <span class="s1">background-color: #000;</span>
+            <span class="s1">color: #FFF;</span>
+            <span class="s1">border: none;</span>
+            <span class="s1">cursor: pointer;</span>
+            <span class="s1">border-radius: 5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button button:focus {</span>
+            <span class="s1">outline: none;</span>
+        <span class="s1">}</span>
+        <span class="s1">.export-button {</span>
+            <span class="s1">display: inline-block;</span>
+            <span class="s1">padding: 10px 20px;</span>
+            <span class="s1">font-size: 16px;</span>
+            <span class="s1">background-color: #000;</span>
+            <span class="s1">color: #FFF;</span>
+            <span class="s1">text-decoration: none;</span>
+            <span class="s1">border-radius: 5px;</span>
+            <span class="s1">margin-top: 10px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.export-button:hover {</span>
+            <span class="s1">background-color: #333;</span>
+        <span class="s1">}</span>
+    <span class="s2">&lt;/style&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+<span class="s2">&lt;body&gt;</span>
+    <span class="s2">&lt;h1&gt;</span><span class="s1">Lost Items</span><span class="s2">&lt;/h1&gt;</span>
+    <span class="s1">{% if items %}</span>
+        <span class="s1">{% for item in items %}</span>
+            <span class="s2">&lt;div </span><span class="s3">class</span><span class="s4">=&quot;item&quot;</span><span class="s2">&gt;</span>
+                <span class="s2">&lt;h2&gt;</span><span class="s1">{{ item.item_type }} - {{ item.brand }}</span><span class="s2">&lt;/h2&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Color:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.color }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Date Lost:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.lost_date.strftime('%Y-%m-%d') if item.lost_date else 'N/A' }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Location:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.campus }}, Floor {{ item.floor }}, Room {{ item.room }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Description:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.description }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Distinctive Features:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.distinctive_features }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Additional Info:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.additional_info }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;p&gt;&lt;strong&gt;</span><span class="s1">Contact:</span><span class="s2">&lt;/strong&gt; </span><span class="s1">{{ item.email }} | {{ item.phone_number }}</span><span class="s2">&lt;/p&gt;</span>
+                <span class="s2">&lt;form </span><span class="s3">action</span><span class="s4">=&quot;{{ url_for('delete_lost_item', item_id=item.id) }}&quot; </span><span class="s3">method</span><span class="s4">=&quot;POST&quot; </span><span class="s3">style</span><span class="s4">=&quot;display:inline;&quot;</span><span class="s2">&gt;</span>
+                    <span class="s2">&lt;button </span><span class="s3">type</span><span class="s4">=&quot;submit&quot; </span><span class="s3">onclick</span><span class="s4">=&quot;return confirm('Are you sure you want to delete this item?');&quot;</span><span class="s2">&gt;</span><span class="s1">Delete</span><span class="s2">&lt;/button&gt;</span>
+                <span class="s2">&lt;/form&gt;</span>
+            <span class="s2">&lt;/div&gt;</span>
+        <span class="s1">{% endfor %}</span>
+    <span class="s1">{% else %}</span>
+        <span class="s2">&lt;p&gt;</span><span class="s1">No lost items have been reported yet.</span><span class="s2">&lt;/p&gt;</span>
+    <span class="s1">{% endif %}</span>
+    <span class="s2">&lt;div </span><span class="s3">class</span><span class="s4">=&quot;back-button&quot;</span><span class="s2">&gt;</span>
+    <span class="s2">&lt;button </span><span class="s3">onclick</span><span class="s4">=&quot;window.location.href='/admin_dashboard'&quot;</span><span class="s2">&gt;</span><span class="s1">Back to Admin Dashboard</span><span class="s2">&lt;/button&gt;</span>
+    <span class="s2">&lt;/div&gt;</span>
+
+<span class="s0">&lt;!-- Export to Excel Button --&gt;</span>
+<span class="s2">&lt;div </span><span class="s3">style</span><span class="s4">=&quot;margin-bottom: 20px;&quot;</span><span class="s2">&gt;</span>
+    <span class="s2">&lt;a </span><span class="s3">href</span><span class="s4">=&quot;{{ url_for('export_lost_items') }}&quot; </span><span class="s3">class</span><span class="s4">=&quot;export-button&quot;</span><span class="s2">&gt;</span><span class="s1">Export to Excel</span><span class="s2">&lt;/a&gt;</span>
+<span class="s2">&lt;/div&gt;</span>
+
+
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Found Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-color: #FFFFFF;
+            color: #000;
+            /* Removed height: 100vh; */
+        }
+
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 60px; /* Adjust as needed */
+        }
+        .back-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #000;
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button button:hover {
+            background-color: #333;
+        }
+        .back-button button:focus {
+            outline: none;
+        }
+
+        /* Form Container Styles */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Ensures container is at least the viewport height */
+            padding-top: 40px; /* Added padding-top */
+            padding-bottom: 40px; /* Added padding-bottom */
+        }
+
+        .form-content {
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px; /* Added margin-top */
+            margin-bottom: 20px;
+        }
+
+        /* Form Group Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .flash-message {
+            color: green;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #000;
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 40px; /* Added margin-bottom */
+        }
+        button[type="submit"]:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button">
+        <button onclick="window.location.href='{{ url_for('home') }}'">Back</button>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <div class="header">FOUND</div>
+        <div class="form-content">
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-message">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <!-- Form -->
+            <form action="{{ url_for('found') }}" method="POST">
+                <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name">
+                </div>
+
+                <div class="form-group">
+                    <label for="second-name">Second Name:</label>
+                    <input type="text" id="second-name" name="second-name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email (optional):</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone-number">Phone Number (optional):</label>
+                    <input type="tel" id="phone-number" name="phone-number">
+                </div>
+
+                <div class="form-group">
+                    <label for="found-date">Found Date:</label>
+                    <input type="date" id="found-date" name="found-date">
+                </div>
+
+                <div class="form-group">
+                    <label for="campus">Campus:</label>
+                    <select id="campus" name="campus">
+                        <option value="Maria de Molina 31">Maria de Molina 31</option>
+                        <option value="Velazquez 130">Velazquez 130</option>
+                        <option value="IE Tower">IE Tower</option>
+                        <option value="Segovia">Segovia</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="floor">Floor:</label>
+                    <input type="text" id="floor" name="floor">
+                </div>
+
+                <div class="form-group">
+                    <label for="room">Classroom/Study Room:</label>
+                    <input type="text" id="room" name="room">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">If not in a room, describe where you found it:</label>
+                    <textarea id="description" name="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="item-type">Type of Item:</label>
+                    <input type="text" id="item-type" name="item-type" placeholder="e.g., Watch, Jacket, Glasses">
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand">
+                </div>
+
+                <div class="form-group">
+                    <label for="color">Color:</label>
+                    <input type="text" id="color" name="color">
+                </div>
+
+                <div class="form-group">
+                    <label for="distinctive-features">Distinctive Features:</label>
+                    <input type="text" id="distinctive-features" name="distinctive-features">
+                </div>
+
+                <div class="form-group">
+                    <label for="additional-info">Additional Information:</label>
+                    <textarea id="additional-info" name="additional-info" rows="3"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

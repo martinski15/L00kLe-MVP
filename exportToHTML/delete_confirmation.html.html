@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>delete_confirmation.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bababa;}
+.s3 { color: #a5c261;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+delete_confirmation.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Confirm Deletion</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">/* Add your styles here */</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: Arial, sans-serif;</span>
+            <span class="s1">background-color: #FFFFFF;</span>
+            <span class="s1">color: #000;</span>
+            <span class="s1">display: flex;</span>
+            <span class="s1">align-items: center;</span>
+            <span class="s1">justify-content: center;</span>
+            <span class="s1">height: 100vh;</span>
+            <span class="s1">margin: 0;</span>
+        <span class="s1">}</span>
+        <span class="s1">.container {</span>
+            <span class="s1">text-align: center;</span>
+            <span class="s1">max-width: 400px;</span>
+            <span class="s1">width: 90%;</span>
+        <span class="s1">}</span>
+        <span class="s1">h1 {</span>
+            <span class="s1">margin-bottom: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">form {</span>
+            <span class="s1">margin-top: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">input[type=&quot;password&quot;] {</span>
+            <span class="s1">width: 100%;</span>
+            <span class="s1">padding: 10px;</span>
+            <span class="s1">font-size: 16px;</span>
+            <span class="s1">margin-bottom: 15px;</span>
+            <span class="s1">border: 1px solid #ccc;</span>
+            <span class="s1">border-radius: 5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">button[type=&quot;submit&quot;] {</span>
+            <span class="s1">width: 100%;</span>
+            <span class="s1">padding: 10px;</span>
+            <span class="s1">font-size: 18px;</span>
+            <span class="s1">background-color: #000;</span>
+            <span class="s1">color: #FFF;</span>
+            <span class="s1">border: none;</span>
+            <span class="s1">cursor: pointer;</span>
+            <span class="s1">border-radius: 5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.flash-message {</span>
+            <span class="s1">color: red;</span>
+            <span class="s1">margin-bottom: 20px;</span>
+        <span class="s1">}</span>
+        <span class="s1">a {</span>
+            <span class="s1">display: inline-block;</span>
+            <span class="s1">margin-top: 20px;</span>
+            <span class="s1">text-decoration: none;</span>
+            <span class="s1">color: #000;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;h1&gt;</span><span class="s1">Confirm Deletion</span><span class="s0">&lt;/h1&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Please enter the password to delete this {{ item_type }} item.</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s4">&lt;!-- Flash messages --&gt;</span>
+        <span class="s1">{% with messages = get_flashed_messages() %}</span>
+            <span class="s1">{% if messages %}</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flash-message&quot;</span><span class="s0">&gt;</span>
+                    <span class="s1">{% for message in messages %}</span>
+                        <span class="s0">&lt;p&gt;</span><span class="s1">{{ message }}</span><span class="s0">&lt;/p&gt;</span>
+                    <span class="s1">{% endfor %}</span>
+                <span class="s0">&lt;/div&gt;</span>
+            <span class="s1">{% endif %}</span>
+        <span class="s1">{% endwith %}</span>
+        <span class="s0">&lt;form </span><span class="s2">method</span><span class="s3">=&quot;POST&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;password&quot; </span><span class="s2">name</span><span class="s3">=&quot;password&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Enter Password&quot; </span><span class="s2">required</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Delete Item</span><span class="s0">&lt;/button&gt;</span>
+        <span class="s0">&lt;/form&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;{{ url_for(item_type + '_items') }}&quot;</span><span class="s0">&gt;</span><span class="s1">Cancel</span><span class="s0">&lt;/a&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>

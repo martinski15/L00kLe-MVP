@@ -1,0 +1,50 @@
+<!-- templates/admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Basic styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: #FFFFFF;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #000;
+        }
+        button {
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #000;
+            color: #FFF;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:focus {
+            outline: none;
+        }
+        .logout-button {
+            margin-top: 30px;
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <button onclick="window.location.href='/lost_items'">View Lost Items</button>
+    <button onclick="window.location.href='/found_items'">View Found Items</button>
+    <button class="logout-button" onclick="window.location.href='/admin_logout'">Logout</button>
+</body>
+</html>

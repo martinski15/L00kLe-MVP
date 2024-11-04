@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LookLess - Lost and Found</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #FFFFFF;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #000;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .buttons button {
+            width: 150px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #000;
+            color: #FFF;
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buttons button:focus {
+            outline: none;
+        }
+        /* Administrator link styles */
+        .admin-link {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: underline;
+            color: grey;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .admin-link:hover {
+            color: darkgrey;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to LookLess</h1>
+        <div class="buttons">
+            <button onclick="window.location.href='/lost'">LOST</button>
+            <button onclick="window.location.href='/found'">FOUND</button>
+        </div>
+        <!-- Administrator link -->
+        <a href="/admin_login" class="admin-link">Administrator</a>
+    </div>
+</body>
+</html>

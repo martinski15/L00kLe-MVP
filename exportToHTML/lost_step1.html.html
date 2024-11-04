@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>lost_step1.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #e8bf6a;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bababa;}
+.s3 { color: #a5c261;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+lost_step1.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Report Lost Item</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;style&gt;</span>
+        <span class="s1">body {</span>
+            <span class="s1">font-family: Arial, sans-serif;</span>
+            <span class="s1">margin: 0;</span>
+            <span class="s1">padding: 0;</span>
+            <span class="s1">position: relative;</span>
+            <span class="s1">background-color: #FFFFFF;</span>
+            <span class="s1">color: #000;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Back Button Styles */</span>
+        <span class="s1">.back-button {</span>
+            <span class="s1">position: absolute;</span>
+            <span class="s1">top: 20px;</span>
+            <span class="s1">left: 60px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button button {</span>
+            <span class="s1">padding: 10px 20px;</span>
+            <span class="s1">font-size: 16px;</span>
+            <span class="s1">background-color: #000;</span>
+            <span class="s1">color: #FFF;</span>
+            <span class="s1">border: none;</span>
+            <span class="s1">cursor: pointer;</span>
+            <span class="s1">border-radius: 5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button button:hover {</span>
+            <span class="s1">background-color: #333;</span>
+        <span class="s1">}</span>
+        <span class="s1">.back-button button:focus {</span>
+            <span class="s1">outline: none;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Form Container Styles */</span>
+        <span class="s1">.form-container {</span>
+            <span class="s1">display: flex;</span>
+            <span class="s1">flex-direction: column;</span>
+            <span class="s1">align-items: center;</span>
+            <span class="s1">min-height: 100vh;</span>
+            <span class="s1">padding-top: 40px;</span>
+            <span class="s1">padding-bottom: 40px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.form-content {</span>
+            <span class="s1">width: 90%;</span>
+            <span class="s1">max-width: 400px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">.header {</span>
+            <span class="s1">text-align: center;</span>
+            <span class="s1">font-size: 24px;</span>
+            <span class="s1">font-weight: bold;</span>
+            <span class="s1">margin-top: 20px;</span>
+            <span class="s1">margin-bottom: 20px;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">/* Form Group Styles */</span>
+        <span class="s1">.form-group {</span>
+            <span class="s1">margin-bottom: 15px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.form-group label {</span>
+            <span class="s1">display: block;</span>
+            <span class="s1">font-weight: bold;</span>
+            <span class="s1">margin-bottom: 5px;</span>
+        <span class="s1">}</span>
+        <span class="s1">.form-group input,</span>
+        <span class="s1">.form-group select,</span>
+        <span class="s1">.form-group textarea {</span>
+            <span class="s1">width: 100%;</span>
+            <span class="s1">padding: 10px;</span>
+            <span class="s1">font-size: 16px;</span>
+            <span class="s1">border: 1px solid #ccc;</span>
+            <span class="s1">border-radius: 5px;</span>
+            <span class="s1">box-sizing: border-box;</span>
+        <span class="s1">}</span>
+        <span class="s1">.flash-message {</span>
+            <span class="s1">color: green;</span>
+            <span class="s1">text-align: center;</span>
+            <span class="s1">margin-bottom: 20px;</span>
+            <span class="s1">font-weight: bold;</span>
+        <span class="s1">}</span>
+        <span class="s1">button[type=&quot;submit&quot;] {</span>
+            <span class="s1">width: 100%;</span>
+            <span class="s1">padding: 10px;</span>
+            <span class="s1">font-size: 18px;</span>
+            <span class="s1">font-weight: bold;</span>
+            <span class="s1">background-color: #000;</span>
+            <span class="s1">color: #FFF;</span>
+            <span class="s1">border: none;</span>
+            <span class="s1">cursor: pointer;</span>
+            <span class="s1">border-radius: 5px;</span>
+            <span class="s1">margin-bottom: 40px;</span>
+        <span class="s1">}</span>
+        <span class="s1">button[type=&quot;submit&quot;]:focus {</span>
+            <span class="s1">outline: none;</span>
+        <span class="s1">}</span>
+    <span class="s0">&lt;/style&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+    <span class="s4">&lt;!-- Back Button --&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;back-button&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;button </span><span class="s2">onclick</span><span class="s3">=&quot;window.location.href='{{ url_for('home') }}'&quot;</span><span class="s0">&gt;</span><span class="s1">Back</span><span class="s0">&lt;/button&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+
+    <span class="s4">&lt;!-- Form Container --&gt;</span>
+    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-container&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;header&quot;</span><span class="s0">&gt;</span><span class="s1">Report Lost Item</span><span class="s0">&lt;/div&gt;</span>
+        <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-content&quot;</span><span class="s0">&gt;</span>
+            <span class="s4">&lt;!-- Flash messages --&gt;</span>
+            <span class="s1">{% with messages = get_flashed_messages() %}</span>
+                <span class="s1">{% if messages %}</span>
+                    <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;flash-message&quot;</span><span class="s0">&gt;</span>
+                        <span class="s1">{% for message in messages %}</span>
+                            <span class="s0">&lt;p&gt;</span><span class="s1">{{ message }}</span><span class="s0">&lt;/p&gt;</span>
+                        <span class="s1">{% endfor %}</span>
+                    <span class="s0">&lt;/div&gt;</span>
+                <span class="s1">{% endif %}</span>
+            <span class="s1">{% endwith %}</span>
+
+            <span class="s4">&lt;!-- Form --&gt;</span>
+            <span class="s0">&lt;form </span><span class="s2">action</span><span class="s3">=&quot;{{ url_for('lost') }}&quot; </span><span class="s2">method</span><span class="s3">=&quot;POST&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;item-type&quot;</span><span class="s0">&gt;</span><span class="s1">Type of Item:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;item-type&quot; </span><span class="s2">name</span><span class="s3">=&quot;item-type&quot; </span><span class="s2">required</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;brand&quot;</span><span class="s0">&gt;</span><span class="s1">Brand:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;brand&quot; </span><span class="s2">name</span><span class="s3">=&quot;brand&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;color&quot;</span><span class="s0">&gt;</span><span class="s1">Color:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;color&quot; </span><span class="s2">name</span><span class="s3">=&quot;color&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;distinctive-features&quot;</span><span class="s0">&gt;</span><span class="s1">Distinctive Features:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;distinctive-features&quot; </span><span class="s2">name</span><span class="s3">=&quot;distinctive-features&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;lost-date&quot;</span><span class="s0">&gt;</span><span class="s1">Date Lost:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;date&quot; </span><span class="s2">id</span><span class="s3">=&quot;lost-date&quot; </span><span class="s2">name</span><span class="s3">=&quot;lost-date&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;campus&quot;</span><span class="s0">&gt;</span><span class="s1">Campus:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;select </span><span class="s2">id</span><span class="s3">=&quot;campus&quot; </span><span class="s2">name</span><span class="s3">=&quot;campus&quot;</span><span class="s0">&gt;</span>
+                        <span class="s0">&lt;option </span><span class="s2">value</span><span class="s3">=&quot;Maria de Molina 31&quot;</span><span class="s0">&gt;</span><span class="s1">Maria de Molina 31</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;option </span><span class="s2">value</span><span class="s3">=&quot;Velazquez 130&quot;</span><span class="s0">&gt;</span><span class="s1">Velazquez 130</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;option </span><span class="s2">value</span><span class="s3">=&quot;IE Tower&quot;</span><span class="s0">&gt;</span><span class="s1">IE Tower</span><span class="s0">&lt;/option&gt;</span>
+                        <span class="s0">&lt;option </span><span class="s2">value</span><span class="s3">=&quot;Segovia&quot;</span><span class="s0">&gt;</span><span class="s1">Segovia</span><span class="s0">&lt;/option&gt;</span>
+                    <span class="s0">&lt;/select&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;floor&quot;</span><span class="s0">&gt;</span><span class="s1">Floor:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;floor&quot; </span><span class="s2">name</span><span class="s3">=&quot;floor&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;room&quot;</span><span class="s0">&gt;</span><span class="s1">Classroom/Study Room:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">id</span><span class="s3">=&quot;room&quot; </span><span class="s2">name</span><span class="s3">=&quot;room&quot;</span><span class="s0">&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;description&quot;</span><span class="s0">&gt;</span><span class="s1">If you did not lose it in a room, describe where exactly you lost it:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;textarea </span><span class="s2">id</span><span class="s3">=&quot;description&quot; </span><span class="s2">name</span><span class="s3">=&quot;description&quot; </span><span class="s2">rows</span><span class="s3">=&quot;3&quot;</span><span class="s0">&gt;&lt;/textarea&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;div </span><span class="s2">class</span><span class="s3">=&quot;form-group&quot;</span><span class="s0">&gt;</span>
+                    <span class="s0">&lt;label </span><span class="s2">for</span><span class="s3">=&quot;additional-info&quot;</span><span class="s0">&gt;</span><span class="s1">Additional Information:</span><span class="s0">&lt;/label&gt;</span>
+                    <span class="s0">&lt;textarea </span><span class="s2">id</span><span class="s3">=&quot;additional-info&quot; </span><span class="s2">name</span><span class="s3">=&quot;additional-info&quot; </span><span class="s2">rows</span><span class="s3">=&quot;3&quot;</span><span class="s0">&gt;&lt;/textarea&gt;</span>
+                <span class="s0">&lt;/div&gt;</span>
+
+                <span class="s0">&lt;button </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span><span class="s1">Next</span><span class="s0">&lt;/button&gt;</span>
+            <span class="s0">&lt;/form&gt;</span>
+        <span class="s0">&lt;/div&gt;</span>
+    <span class="s0">&lt;/div&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span>
+</pre>
+</body>
+</html>
