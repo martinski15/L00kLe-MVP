@@ -389,6 +389,5 @@ def export_found_items():
         mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
 
-
 if __name__ == '__main__':
     app.run(debug=True)
