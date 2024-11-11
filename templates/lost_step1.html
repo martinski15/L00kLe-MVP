@@ -4,183 +4,121 @@
     <meta charset="UTF-8">
     <title>Report Lost Item</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            background-color: #FFFFFF;
-            color: #000;
-        }
-
-        /* Back Button Styles */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 60px;
-        }
-        .back-button button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #000;
-            color: #FFF;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .back-button button:hover {
-            background-color: #333;
-        }
-        .back-button button:focus {
-            outline: none;
-        }
-
-        /* Form Container Styles */
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .form-content {
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .header {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Form Group Styles */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .flash-message {
-            color: green;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: #000;
-            color: #FFF;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 40px;
-        }
-        button[type="submit"]:focus {
-            outline: none;
-        }
+        body { font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .form-container { width: 100%; max-width: 400px; text-align: center; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        select, input, textarea { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 5px; }
+        button { width: 100%; padding: 10px; font-size: 18px; background-color: #000; color: #FFF; cursor: pointer; }
+        .back-button { position: absolute; top: 20px; left: 20px; }
+        h2 { margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <!-- Back Button -->
     <div class="back-button">
         <button onclick="window.location.href='{{ url_for('home') }}'">Back</button>
     </div>
-
-    <!-- Form Container -->
     <div class="form-container">
-        <div class="header">Report Lost Item</div>
-        <div class="form-content">
-            <!-- Flash messages -->
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="flash-message">
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
+        <h2>Report Lost Item</h2>
+        <form action="{{ url_for('lost') }}" method="POST">
+            <div class="form-group">
+                <label for="item-type">Type of Item:</label>
+                <select id="item-type" name="item-type" required>
+                    <option value="Bag">Bag</option>
+                    <option value="Book">Book</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Electronic">Electronic</option>
+                    <option value="Glasses">Glasses</option>
+                    <option value="Headphones">Headphones</option>
+                    <option value="Jewelry">Jewelry</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Notebook">Notebook</option>
+                    <option value="Pen">Pen</option>
+                    <option value="Phone">Phone</option>
+                    <option value="Shoes">Shoes</option>
+                    <option value="Umbrella">Umbrella</option>
+                    <option value="Wallet">Wallet</option>
+                    <option value="Watch">Watch</option>
+                    <option value="Water Bottle">Water Bottle</option>
+                    <option value="Charger">Charger</option>
+                    <option value="Earbuds">Earbuds</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
 
-            <!-- Form -->
-            <form action="{{ url_for('lost') }}" method="POST">
-                <div class="form-group">
-                    <label for="item-type">Type of Item:</label>
-                    <input type="text" id="item-type" name="item-type" required>
-                </div>
+            <div class="form-group">
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand">
+            </div>
 
-                <div class="form-group">
-                    <label for="brand">Brand:</label>
-                    <input type="text" id="brand" name="brand">
-                </div>
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <select id="color" name="color" required>
+                    <option value="Black">Black</option>
+                    <option value="White">White</option>
+                    <option value="Red">Red</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Gray">Gray</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Beige">Beige</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="color">Color:</label>
-                    <input type="text" id="color" name="color">
-                </div>
+            <div class="form-group">
+                <label for="distinctive-features">Distinctive Features:</label>
+                <input type="text" id="distinctive-features" name="distinctive-features">
+            </div>
 
-                <div class="form-group">
-                    <label for="distinctive-features">Distinctive Features:</label>
-                    <input type="text" id="distinctive-features" name="distinctive-features">
-                </div>
+            <div class="form-group">
+                <label for="lost-date">Date Lost:</label>
+                <input type="date" id="lost-date" name="lost-date">
+            </div>
 
-                <div class="form-group">
-                    <label for="lost-date">Date Lost:</label>
-                    <input type="date" id="lost-date" name="lost-date">
-                </div>
+            <div class="form-group">
+                <label for="campus">Campus:</label>
+                <select id="campus" name="campus" required>
+                    <option value="IE Tower">IE Tower</option>
+                    <option value="Maria de Molina 31">Maria de Molina 31</option>
+                    <option value="Velazquez 130">Velazquez 130</option>
+                    <option value="Segovia">Segovia</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="campus">Campus:</label>
-                    <select id="campus" name="campus">
-                        <option value="Maria de Molina 31">Maria de Molina 31</option>
-                        <option value="Velazquez 130">Velazquez 130</option>
-                        <option value="IE Tower">IE Tower</option>
-                        <option value="Segovia">Segovia</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="floor">Floor:</label>
+                <select id="floor" name="floor" required>
+                    {% for i in range(-4, 26) %}
+                        <option value="{{ i }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="floor">Floor:</label>
-                    <input type="text" id="floor" name="floor">
-                </div>
+            <div class="form-group">
+                <label for="room">Classroom/Study Room:</label>
+                <input type="text" id="room" name="room">
+            </div>
 
-                <div class="form-group">
-                    <label for="room">Classroom/Study Room:</label>
-                    <input type="text" id="room" name="room">
-                </div>
+            <div class="form-group">
+                <label for="description">If you did not lose it in a room, describe where exactly you lost it:</label>
+                <textarea id="description" name="description" rows="3"></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label for="description">If you did not lose it in a room, describe where exactly you lost it:</label>
-                    <textarea id="description" name="description" rows="3"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="additional-info">Additional Information:</label>
+                <textarea id="additional-info" name="additional-info" rows="3"></textarea>
+            </div>
 
-                <div class="form-group">
-                    <label for="additional-info">Additional Information:</label>
-                    <textarea id="additional-info" name="additional-info" rows="3"></textarea>
-                </div>
-
-                <button type="submit">Next</button>
-            </form>
-        </div>
+            <button type="submit">Next</button>
+        </form>
     </div>
 </body>
 </html>

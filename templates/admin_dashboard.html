@@ -10,6 +10,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
+            height: 100vh;
             margin: 0;
             background-color: #FFFFFF;
             font-family: Arial, sans-serif;
@@ -20,7 +22,14 @@
             font-size: 36px;
             color: #000;
         }
-        button {
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex-grow: 1;
+        }
+        button, .matches-button {
             width: 200px;
             height: 50px;
             font-size: 18px;
@@ -28,23 +37,32 @@
             background-color: #000;
             color: #FFF;
             border: none;
-            margin: 10px;
             cursor: pointer;
             border-radius: 5px;
         }
-        button:focus {
+        button:focus, .matches-button:focus {
             outline: none;
         }
+        .matches-button {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .logout-button {
-            margin-top: 30px;
             background-color: #555;
+            margin-top: auto;
+            margin-bottom: 50px; /* Increases space above the bottom edge */
         }
     </style>
 </head>
 <body>
     <h1>Admin Dashboard</h1>
-    <button onclick="window.location.href='/lost_items'">View Lost Items</button>
-    <button onclick="window.location.href='/found_items'">View Found Items</button>
+    <div class="button-container">
+        <button onclick="window.location.href='/lost_items'">View Lost Items</button>
+        <button onclick="window.location.href='/found_items'">View Found Items</button>
+        <a href="{{ url_for('admin_matches') }}" class="matches-button">View Potential Matches</a>
+    </div>
     <button class="logout-button" onclick="window.location.href='/admin_logout'">Logout</button>
 </body>
 </html>

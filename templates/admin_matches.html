@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Potential Matches</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; }
+        .button-container { display: flex; justify-content: center; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .match-percentage { font-weight: bold; }
+        .hide-button, .unhide-button { background-color: #d9534f; color: white; padding: 5px 10px; cursor: pointer; border-radius: 3px; text-decoration: none; }
+        .hidden-row { background-color: #f9f9f9; color: #aaa; }
+        .back-button { background-color: #555; color: white; padding: 10px 20px; text-align: center; text-decoration: none; font-size: 16px; font-weight: bold; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Potential Matches</h1>
+    <div class="button-container">
+        <a href="{{ url_for('admin_dashboard') }}" class="back-button">Back to Admin Hub</a>
+    </div>
+
+    {% if matches %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Lost Item</th>
+                    <th>Found Item</th>
+                    <th>Match Percentage</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for match in matches %}
+                    <tr class="{% if match.is_hidden %}hidden-row{% endif %}">
+                        <td>
+                            <p><strong>Full Name:</strong> {{ match.lost_item.first_name }} {{ match.lost_item.second_name }}</p>
+                            <p><strong>Email:</strong> {{ match.lost_item.email }}</p>
+                            <p><strong>Item Number:</strong> {{ match.lost_item.item_number }}</p>
+                            <p><strong>Type:</strong> {{ match.lost_item.item_type }}</p>
+                            <p><strong>Color:</strong> {{ match.lost_item.color }}</p>
+                            <p><strong>Brand:</strong> {{ match.lost_item.brand }}</p>
+                            <p><strong>Location:</strong> {{ match.lost_item.campus }}, Floor {{ match.lost_item.floor }}, Room {{ match.lost_item.room }}</p>
+                        </td>
+                        <td>
+                            <p><strong>Item Number:</strong> {{ match.found_item.item_number }}</p>
+                            <p><strong>Storage Code:</strong> {{ match.found_item.storage_code }}</p> <!-- Storage Code (Código de Almacén) -->
+                            <p><strong>Type:</strong> {{ match.found_item.item_type }}</p>
+                            <p><strong>Color:</strong> {{ match.found_item.color }}</p>
+                            <p><strong>Brand:</strong> {{ match.found_item.brand }}</p>
+                            <p><strong>Location:</strong> {{ match.found_item.campus }}, Floor {{ match.found_item.floor }}, Room {{ match.found_item.room }}</p>
+                        </td>
+                        <td class="match-percentage">{{ match.match_percentage }}%</td>
+                        <td>
+                            <form action="{{ url_for('toggle_match_visibility', match_id=match.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="{% if match.is_hidden %}unhide-button{% else %}hide-button{% endif %}">
+                                    {% if match.is_hidden %}Unhide{% else %}Hide{% endif %}
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No potential matches found above the match threshold.</p>
+    {% endif %}
+</body>
+</html>

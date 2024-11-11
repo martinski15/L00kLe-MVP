@@ -1,28 +1,31 @@
-<!-- templates/admin_login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Administrator Login</title>
+    <title>Confirm Match Deletion</title>
     <style>
-        /* Basic styles */
         body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #000;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #FFFFFF;
-            font-family: Arial, sans-serif;
         }
-        .login-container {
+        .container {
             text-align: center;
-            width: 300px;
+            max-width: 400px;
+            width: 90%;
         }
-        .login-container h2 {
+        h1 {
             margin-bottom: 20px;
         }
-        .login-container input[type="password"] {
+        form {
+            margin-top: 20px;
+        }
+        input[type="password"] {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -30,35 +33,32 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .login-container button {
+        button[type="submit"] {
             width: 100%;
             padding: 10px;
             font-size: 18px;
-            font-weight: bold;
-            background-color: #000;
+            background-color: #d9534f;
             color: #FFF;
             border: none;
             cursor: pointer;
             border-radius: 5px;
         }
-        .login-container button:focus {
-            outline: none;
-        }
         .flash-message {
             color: red;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .back-button { position: absolute; top: 20px; left: 20px; }
-        button { width: 100%; padding: 10px; font-size: 18px; background-color: #000; color: #FFF; cursor: pointer; }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #000;
+        }
     </style>
 </head>
 <body>
-    <div class="back-button">
-        <button onclick="window.location.href='{{ url_for('home') }}'">Back</button>
-    </div>
-    <div class="login-container">
-        <h2>Administrator Login</h2>
-        <!-- Flash messages -->
+    <div class="container">
+        <h1>Confirm Match Deletion</h1>
+        <p>Please enter the password to delete this match.</p>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="flash-message">
@@ -68,10 +68,11 @@
                 </div>
             {% endif %}
         {% endwith %}
-        <form action="{{ url_for('admin_login') }}" method="POST">
+        <form method="POST">
             <input type="password" name="password" placeholder="Enter Password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Delete Match</button>
         </form>
+        <a href="{{ url_for('admin_matches') }}">Cancel</a>
     </div>
 </body>
 </html>

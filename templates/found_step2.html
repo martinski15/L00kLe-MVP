@@ -2,148 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Report Found Item</title>
+    <title>Provide Contact Information</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            background-color: #FFFFFF;
-            color: #000;
-        }
-
-        /* Back Button Styles */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 60px;
-        }
-        .back-button button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #000;
-            color: #FFF;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .back-button button:hover {
-            background-color: #333;
-        }
-        .back-button button:focus {
-            outline: none;
-        }
-
-        /* Form Container Styles */
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .form-content {
-            width: 90%;
-            max-width: 400px;
-        }
-
-        .header {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Form Group Styles */
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .flash-message {
-            color: green;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: #000;
-            color: #FFF;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-bottom: 40px;
-        }
-        button[type="submit"]:focus {
-            outline: none;
-        }
+        body { font-family: Arial, sans-serif; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .form-container { width: 100%; max-width: 400px; text-align: center; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; }
+        input { width: 100%; padding: 10px; font-size: 16px; margin-bottom: 5px; }
+        input[readonly] { background-color: #f2f2f2; }
+        button { width: 100%; padding: 10px; font-size: 18px; background-color: #000; color: #FFF; cursor: pointer; }
+        .back-button { position: absolute; top: 20px; left: 20px; }
+        h2 { margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <!-- Back Button -->
     <div class="back-button">
-        <button onclick="window.location.href='{{ url_for('found') }}'">Back</button>
+        <!-- Form for the back button to submit a 'back' action -->
+        <form action="{{ url_for('found') }}" method="POST">
+            <input type="hidden" name="back" value="1">
+            <button type="submit">Back</button>
+        </form>
     </div>
-
-    <!-- Form Container -->
     <div class="form-container">
-        <div class="header">Report Found Item</div>
-        <div class="form-content">
-            <!-- Flash messages -->
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div class="flash-message">
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endwith %}
+        <h2>Provide Contact Information</h2>
+        <form action="{{ url_for('found') }}" method="POST">
+            <input type="hidden" name="step" value="2">
 
-            <!-- Form -->
-            <form action="{{ url_for('found') }}" method="POST">
-                <div class="form-group">
-                    <label for="first-name">First Name:</label>
-                    <input type="text" id="first-name" name="first-name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="second-name">Last Name:</label>
-                    <input type="text" id="second-name" name="second-name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email (optional):</label>
-                    <input type="email" id="email" name="email">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone-number">Phone Number (optional):</label>
-                    <input type="tel" id="phone-number" name="phone-number">
-                </div>
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="item-number">Item Number:</label>
+                <input type="text" id="item-number" name="item-number" value="{{ item_number }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div class="form-group">
+                <label for="second-name">Last Name:</label>
+                <input type="text" id="second-name" name="second-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="storage-code">Storage Code (Código de Almacén):</label>
+                <input type="text" id="storage-code" name="storage-code">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
 </body>
 </html>

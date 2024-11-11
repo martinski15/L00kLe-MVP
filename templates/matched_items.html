@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matched Items</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { text-align: center; }
+        .item { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Matched Items</h1>
+    {% if matches %}
+        {% for match in matches %}
+            <div class="item">
+                <h2>Lost Item: {{ match.lost_item.item_type }} - Found Item: {{ match.found_item.item_type }}</h2>
+                <p><strong>Match Percentage:</strong> {{ match.match_percentage }}%</p>
+                <p><strong>Lost Item Details:</strong> {{ match.lost_item.description }}</p>
+                <p><strong>Found Item Details:</strong> {{ match.found_item.description }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+</body>
+</html>
